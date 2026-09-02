@@ -1,0 +1,9 @@
+# Deploy only the static dashboard, Vercel Functions, and their shared module.
+/*
+!api
+!api/**
+!lib
+!lib/**
+!economy-dashboard.html
+!package.json
+!vercel.json
