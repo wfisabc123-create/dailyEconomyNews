@@ -16,8 +16,8 @@ function send(res, status, body, type = 'application/json; charset=utf-8') {
 http.createServer(async (req, res) => {
   try {
     if (req.url.startsWith('/api/markets')) return send(res, 200, JSON.stringify(await markets()));
-    if (req.url.startsWith('/api/news')) return send(res, 200, JSON.stringify(await news('경제 금융 시장')));
-    if (req.url.startsWith('/api/crypto-news')) return send(res, 200, JSON.stringify(await news('비트코인 이더리움 가상자산', true)));
+    if (req.url.startsWith('/api/news')) return send(res, 200, JSON.stringify(await news('(경제 OR 증시 OR 금융)')));
+    if (req.url.startsWith('/api/crypto-news')) return send(res, 200, JSON.stringify(await news('(비트코인 OR 가상자산 OR 암호화폐)', false)));
     if (req.url.startsWith('/api/events')) return send(res, 200, JSON.stringify(await events()));
     if (req.url === '/' || req.url === '/economy-dashboard.html') return send(res, 200, fs.readFileSync(path.join(root, 'economy-dashboard.html')), 'text/html; charset=utf-8');
     send(res, 404, JSON.stringify({ error: 'Not found' }));
